@@ -4,7 +4,7 @@ __version__ = "0.1.7"
 
 def setup(app):
     from .asciinema import Asciinema, ASCIINemaDirective
-    from .asciinema import copy_asset_files, visit, depart
+    from .asciinema import copy_asset_files, visit, depart, conf_visit, conf_depart
 
     app.add_config_value('sphinxcontrib_asciinema_defaults', {}, 'html')
 
@@ -13,5 +13,5 @@ def setup(app):
     app.add_css_file('asciinema-player_2.6.1.css')
     app.add_css_file('asciinema-custom.css')
 
-    app.add_node(Asciinema, html=(visit, depart))
+    app.add_node(Asciinema, html=(visit, depart), confluence=(conf_visit, conf_depart))
     app.add_directive('asciinema', ASCIINemaDirective)
